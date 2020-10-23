@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tw-chip {
+  @apply inline-block rounded-full px-3 py-1 text-xs text-gray-700 mr-2 mb-2
+}

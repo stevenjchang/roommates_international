@@ -6,7 +6,7 @@ const ListingAll = ({ listings }) => {
   return (
     <>
       listings
-      <div className="flex">
+      <div className="flex flex-wrap container mx-auto">
         {listings &&
           listings.map((item, idx) => {
             return <ListingDetail key={idx} {...item} />;

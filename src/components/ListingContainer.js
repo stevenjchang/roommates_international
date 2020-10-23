@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { ListingAll } from "components/ListingAll";
+import { ListingSearchBar } from "components/ListingSearchBar";
 import { serverUrl } from "utils/url";
 
 const ListingContainer = () => {
@@ -23,6 +24,7 @@ const ListingContainer = () => {
 
   return (
     <>
+      <ListingSearchBar setData={setData} />
       <ListingAll listings={data} />
     </>
   );
