@@ -30,7 +30,7 @@ const Truncate = ({ str, charCount }) => {
           <span className="">
             {truncatedText}
             <span className="tw-read-more" onClick={toggleTruncate}>
-              ...
+              ... <span className="text-indigo-600 text-sm">read more</span>
             </span>
           </span>
         )}
