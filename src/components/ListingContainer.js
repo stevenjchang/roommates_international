@@ -52,7 +52,10 @@ const ListingContainer = () => {
 
   return (
     <>
-      <ListingSearchBar setFilterSettings={setFilterSettings} />
+      <ListingSearchBar
+        filterSettings={filterSettings}
+        setFilterSettings={setFilterSettings}
+      />
       <ListingAll listings={filteredListing(data, filterSettings)} />
     </>
   );
