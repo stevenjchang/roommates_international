@@ -4,11 +4,23 @@ import Truncate from "components/Truncate";
 
 const placeholderImgUrl = "https://via.placeholder.com/380x280";
 
-const Card = ({ title, summary, imgUrl = placeholderImgUrl }) => (
+const Card = ({
+  title,
+  summary,
+  imgUrl = placeholderImgUrl,
+  shared_house,
+  shared_room,
+  price,
+}) => (
   <div className="w-full md:w-1/3 mb-8">
     <div class="rounded overflow-hidden shadow-lg mx-8">
       <div class="px-6 py-4">
-        <img class="w-full" src={imgUrl} alt="Sunset in the mountains" />
+        <div className="relative">
+          <span className="absolute tw-price-float rounded-br-sm">
+            ${price} / month
+          </span>
+          <img class="w-full" src={imgUrl} alt="Sunset in the mountains" />
+        </div>
         <div class="font-bold text-lg my-6">{title}</div>
 
         {/* <p class="text-gray-700 text-xs text-left">{summary}</p> */}
@@ -23,10 +35,17 @@ const Card = ({ title, summary, imgUrl = placeholderImgUrl }) => (
   </div>
 );
 
-const ListingDetail = ({ account_id, category_id, id, summary, title }) => {
+const ListingDetail = ({
+  account_id,
+  category_id,
+  id,
+  summary,
+  title,
+  ...props
+}) => {
   return (
     <>
-      <Card title={title} summary={summary} />
+      <Card title={title} summary={summary} {...props} />
     </>
   );
 };

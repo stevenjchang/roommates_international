@@ -5,7 +5,7 @@ import { ListingDetail } from "components/ListingDetail";
 const ListingAll = ({ listings }) => {
   return (
     <>
-      <div className="flex flex-wrap container mx-auto">
+      <div className="flex flex-wrap container mx-auto mt-20">
         {listings &&
           listings.map((item, idx) => {
             return <ListingDetail key={idx} {...item} />;

@@ -1,7 +1,12 @@
 import React from "react";
 
-const ListingSearchBar = ({ setData }) => {
-  const handleSearchTerm = (word) => {};
+const ListingSearchBar = ({ setFilterSettings }) => {
+  const handleSearchTerm = (e) => {
+    setFilterSettings({
+      shared_room: false,
+      shared_house: true,
+    });
+  };
   return (
     <>
       <div class="bg-gray-100">
@@ -10,6 +15,9 @@ const ListingSearchBar = ({ setData }) => {
             Ready to dive in?
             <br />
             <span class="text-indigo-600">Start your free trial today.</span>
+            <button className="" onClick={handleSearchTerm}>
+              SET SETTINGS
+            </button>
           </h2>
           <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
             <div class="inline-flex rounded-md shadow">
