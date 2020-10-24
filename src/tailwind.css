@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.tw-summary-p {
+  @apply text-gray-700 text-xs text-left
+}
+.tw-read-more {
+  @apply text-sm rounded-sm bg-gray-100 ml-3 px-2
+}
 .tw-chip {
   @apply inline-block rounded-full px-3 py-1 text-xs text-gray-700 mr-2 mb-2
 }
