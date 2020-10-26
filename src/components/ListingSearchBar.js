@@ -29,44 +29,6 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
             <br />
             <span class="text-indigo-600">Start your free trial today.</span>
             <br />
-            {/*  */}
-            <div className="bg-gray-300 border-4 text-sm p-8">
-              <form action="" className="" onSubmit={handleSubmit}>
-                <input
-                  name="shared_room"
-                  type="checkbox"
-                  checked={shared_room}
-                  onChange={handleSearchTerm}
-                  class="checked:bg-gray-900 checked:border-transparent"
-                ></input>
-                <label>Share a room</label>
-                <input
-                  name="shared_house"
-                  type="checkbox"
-                  checked={shared_house}
-                  onChange={handleSearchTerm}
-                  class="checked:bg-gray-900 checked:border-transparent"
-                ></input>
-                <label>Share a house</label>
-                <input
-                  name="price_min"
-                  type="number"
-                  checked={price_min}
-                  onChange={handleSearchTerm}
-                  class="checked:bg-gray-900 checked:border-transparent"
-                ></input>
-                <label>Min Price</label>
-                <input
-                  name="price_max"
-                  type="number"
-                  checked={price_max}
-                  onChange={handleSearchTerm}
-                  class=""
-                ></input>
-                <label>Max Price</label>
-                <input type="submit" className="" />
-              </form>
-            </div>
           </h2>
           <br />
 
@@ -89,6 +51,44 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
             </div>
           </div>
         </div>
+      </div>
+      {/*  */}
+      <div className="bg-gray-300 border-4 text-sm p-8">
+        <form action="" className="" onSubmit={handleSubmit}>
+          <input
+            name="shared_room"
+            type="checkbox"
+            checked={shared_room}
+            onChange={handleSearchTerm}
+            class="checked:bg-gray-900 checked:border-transparent"
+          ></input>
+          <label>Share a room</label>
+          <input
+            name="shared_house"
+            type="checkbox"
+            checked={shared_house}
+            onChange={handleSearchTerm}
+            class="checked:bg-gray-900 checked:border-transparent"
+          ></input>
+          <label>Share a house</label>
+          <input
+            name="price_min"
+            type="number"
+            checked={price_min}
+            onChange={handleSearchTerm}
+            class="checked:bg-gray-900 checked:border-transparent"
+          ></input>
+          <label>Min Price</label>
+          <input
+            name="price_max"
+            type="number"
+            checked={price_max}
+            onChange={handleSearchTerm}
+            class=""
+          ></input>
+          <label>Max Price</label>
+          <input type="submit" className="" />
+        </form>
       </div>
     </>
   );

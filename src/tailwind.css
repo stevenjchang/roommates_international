@@ -16,9 +16,12 @@
   left: 0px;
   @apply opacity-75 text-blue-600 font-bold text-lg bg-white p-2
 }
+label {
+  @apply text-xs
+}
 input {
   @apply mx-2
 }
 input[type=number] {
-  width: 8rem;
+  width: 5rem;
 }

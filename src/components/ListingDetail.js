@@ -30,6 +30,12 @@ const Card = ({
         <span class="tw-chip bg-purple-300">#photography</span>
         <span class="tw-chip bg-gray-300">#travel</span>
         <span class="tw-chip bg-blue-300">#winter</span>
+        <span class="tw-chip bg-gray-300">
+          shared_room = {shared_room.toString()}
+        </span>
+        <span class="tw-chip bg-gray-300">
+          shared_house = {shared_house.toString()}
+        </span>
       </div>
     </div>
   </div>
