@@ -8,8 +8,8 @@ export function useListFilters() {
   const [filters, setFilters] = useState({
     price_min: 0,
     price_max: 100000000,
-    shared_room: false,
-    shared_house: false,
+    shared_room: null,
+    shared_house: null,
   });
   const { price_min, price_max, shared_room, shared_house } = filters;
 

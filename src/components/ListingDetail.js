@@ -10,6 +10,7 @@ const Card = ({
   imgUrl = placeholderImgUrl,
   shared_house,
   shared_room,
+  listing_id,
   price,
 }) => (
   <div className="w-full md:w-1/3 mb-8">
@@ -18,6 +19,9 @@ const Card = ({
         <div className="relative">
           <span className="absolute tw-price-float rounded-br-sm">
             ${price} / month
+          </span>
+          <span className="absolute tw-large-number-float float rounded-br-sm">
+            {listing_id}
           </span>
           <img class="w-full" src={imgUrl} alt="Sunset in the mountains" />
         </div>

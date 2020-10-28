@@ -6,7 +6,9 @@ const filteredListing = (listings, userFilters) => {
   return listings.filter((listing) => {
     let bool = true;
     for (let [key, value] of Object.entries(userFilters)) {
-      if (key === "price_max") {
+      if (userFilters[key] === null) {
+        bool = true;
+      } else if (key === "price_max") {
         if (listing.price > value) {
           bool = false;
         }
@@ -15,7 +17,12 @@ const filteredListing = (listings, userFilters) => {
           bool = false;
         }
       } else {
-        if (listing[key] !== userFilters[key]) {
+        if (listing[key] === true && userFilters[key] === true) {
+          console.log("else ==>");
+          console.log("listing ==>", listing);
+          console.log("key ==>", key);
+          console.log("listing[key] ==>", listing[key]);
+          console.log("userFilters[key] ==>", userFilters[key]);
           bool = false;
         }
       }
@@ -34,6 +41,11 @@ const ListingAll = ({ data, filterSettings }) => {
           listings.map((item, idx) => {
             return <ListingDetail key={idx} {...item} />;
           })}
+        {Array.isArray(listings) && listings.length === 0 && (
+          <div className="text-center">
+            Sorry, there are no listings with that criteria{" "}
+          </div>
+        )}
       </div>
     </>
   );
