@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { ListingAll } from "components/ListingAll";
-import { ListingSearchBar } from "components/ListingSearchBar";
+import { ListingAll } from "components/Listing/ListingAll";
+import { ListingSearchBar } from "components/Listing/ListingSearchBar";
 import { getUrlWithParams, removeNullValues } from "utils/url";
 import { useSearch } from "hooks/useSearch";
 
