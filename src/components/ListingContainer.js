@@ -1,35 +1,47 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { ListingAll } from "components/ListingAll";
 import { ListingSearchBar } from "components/ListingSearchBar";
-import { useListFilters } from "hooks/useListFilters";
+import { getUrlWithParams, removeNullValues } from "utils/url";
+import { useSearch } from "hooks/useSearch";
 
 const ListingContainer = () => {
-  // const [filterSettings, setFilterSettings] = useState({
-  // price_min: 1100,
-  // price_max: 1600,
-  // shared_room: false,
-  // shared_house: true,
-  // });
-
+  const history = useHistory();
+  const [listings, setListings] = useState([]);
   const {
-    handleSearchTerm,
-    price_min,
-    price_max,
-    shared_room,
-    shared_house,
-    data,
-    filters: filterSettings,
-    setFilters: setFilterSettings,
-  } = useListFilters();
+    searchCriteria,
+    inputValue,
+    handleInputChange,
+    handleSubmit,
+  } = useSearch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const urlWithParams = getUrlWithParams("listing/all", searchCriteria);
+        const res = await fetch(urlWithParams);
+        const { result } = await res.json();
+        setListings(result);
+      } catch (err) {
+        console.log("err ==>", err);
+      }
+    };
+    const searchParams = new URLSearchParams(removeNullValues(searchCriteria));
+    history.push({
+      search: searchParams.toString(),
+    });
+    fetchData();
+  }, [searchCriteria, history]);
 
   return (
     <>
       <ListingSearchBar
-        filterSettings={filterSettings}
-        setFilterSettings={setFilterSettings}
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
       />
-      <ListingAll data={data} filterSettings={filterSettings} />
+      <ListingAll data={listings} />
     </>
   );
 };

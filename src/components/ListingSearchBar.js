@@ -1,43 +1,38 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
-import { useListFilters } from "hooks/useListFilters";
+// import { useListFilters } from "hooks/useListFilters";
 
-const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
-  const history = useHistory();
-  const {
-    handleSearchTerm,
-    price_min,
-    price_max,
-    shared_room,
-    shared_house,
-  } = useListFilters();
+const ListingSearchBar = ({ inputValue, handleInputChange, handleSubmit }) => {
+  // const history = useHistory();
+  const { price_min, price_max, shared_room, shared_house } = inputValue;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const removeNull = (obj) => {
-      return Object.entries(obj).reduce((acc, curr) => {
-        const [k, v] = curr;
-        if (v === null || typeof v === "undefined" || v === "") {
-          return acc;
-        } else {
-          return Object.assign(acc, { [k]: v });
-        }
-      }, {});
-    };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const removeNull = (obj) => {
+  //     return Object.entries(obj).reduce((acc, curr) => {
+  //       const [k, v] = curr;
+  //       if (v === null || typeof v === "undefined" || v === "") {
+  //         return acc;
+  //       } else {
+  //         return Object.assign(acc, { [k]: v });
+  //       }
+  //     }, {});
+  //   };
 
-    const sp = removeNull({ price_min, price_max, shared_room, shared_house });
-    console.log("sp ==>", sp);
-    // const createSearchParam =
+  // const sp = removeNull({ price_min, price_max, shared_room, shared_house });
+  // console.log("sp ==>", sp);
+  // const createSearchParam =
 
-    const searchParamsObject = new URLSearchParams(sp);
+  // const searchParamsObject = new URLSearchParams(sp);
 
-    history.push({
-      search: searchParamsObject.toString(),
-    });
+  // history.push({
+  //   search: searchParamsObject.toString(),
+  // });
 
-    setFilterSettings(sp);
-  };
+  // setFilterSettings(sp);
+  // handleInputChange();
+
   return (
     <>
       <div class="bg-gray-100">
@@ -77,7 +72,7 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
             name="shared_room"
             type="checkbox"
             checked={shared_room || false}
-            onChange={handleSearchTerm}
+            onChange={handleInputChange}
             class="checked:bg-gray-900 checked:border-transparent"
           ></input>
           <label>Share a room</label>
@@ -85,7 +80,7 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
             name="shared_house"
             type="checkbox"
             checked={shared_house || false}
-            onChange={handleSearchTerm}
+            onChange={handleInputChange}
             class="checked:bg-gray-900 checked:border-transparent"
           ></input>
           <label>Share a house</label>
@@ -93,7 +88,7 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
             name="price_min"
             type="number"
             checked={price_min}
-            onChange={handleSearchTerm}
+            onChange={handleInputChange}
             class="checked:bg-gray-900 checked:border-transparent"
           ></input>
           <label>Min Price</label>
@@ -101,7 +96,7 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
             name="price_max"
             type="number"
             checked={price_max}
-            onChange={handleSearchTerm}
+            onChange={handleInputChange}
             class=""
           ></input>
           <label>Max Price</label>

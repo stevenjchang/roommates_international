@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { serverUrl } from "utils/url";
+import { getBaseUrl } from "utils/url";
 
 export function useListFilters() {
   const [data, setData] = useState([]);
@@ -13,16 +13,13 @@ export function useListFilters() {
   });
   const { price_min, price_max, shared_room, shared_house } = filters;
 
-  useEffect(() => {
-    console.log("useEffect ==>");
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const url = serverUrl("listing/all");
+  const fetchData = async (params) => {
+    console.log("fetch? ==>");
+    const url = baseUrl("listing/all");
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, params);
       const { result } = await response.json();
+      console.log("result ==>", result);
       setData(result);
     } catch (err) {
       console.log("Error:", err);
@@ -39,10 +36,15 @@ export function useListFilters() {
     }));
   };
 
-  const handleFiltersSubmit = (e) => {};
+  const handleSearchSubmit = (e) => {
+    fetchData(filters).then((res) => {
+      console.log("res ==>", res);
+    });
+  };
 
   return {
     handleSearchTerm,
+    handleSearchSubmit,
     price_min,
     price_max,
     shared_room,

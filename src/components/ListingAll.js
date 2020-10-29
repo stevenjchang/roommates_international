@@ -18,11 +18,11 @@ const filteredListing = (listings, userFilters) => {
         }
       } else {
         if (listing[key] === true && userFilters[key] === true) {
-          console.log("else ==>");
-          console.log("listing ==>", listing);
-          console.log("key ==>", key);
-          console.log("listing[key] ==>", listing[key]);
-          console.log("userFilters[key] ==>", userFilters[key]);
+          // console.log("else ==>");
+          // console.log("listing ==>", listing);
+          // console.log("key ==>", key);
+          // console.log("listing[key] ==>", listing[key]);
+          // console.log("userFilters[key] ==>", userFilters[key]);
           bool = false;
         }
       }
@@ -32,8 +32,8 @@ const filteredListing = (listings, userFilters) => {
 };
 
 const ListingAll = ({ data, filterSettings }) => {
-  const listings = filteredListing(data, filterSettings);
-  console.log("listings ==>", listings);
+  // const listings = filteredListing(data, filterSettings);
+  const listings = data;
   return (
     <>
       <div className="flex flex-wrap container mx-auto mt-20">
