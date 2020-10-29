@@ -1,4 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
+const cleanCheckboxValue = (val) => {
+  return val === true ? true : undefined;
+};
 
 export function useSearch() {
   const [searchCriteria, setSearchCriteria] = useState({});
@@ -11,7 +15,10 @@ export function useSearch() {
 
   const handleInputChange = (e) => {
     const target = e.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value =
+      target.type === "checkbox"
+        ? cleanCheckboxValue(target.checked)
+        : target.value;
     const name = target.name;
     setInputValue((prevState) => ({
       ...prevState,
