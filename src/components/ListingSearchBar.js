@@ -1,8 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { useListFilters } from "hooks/useListFilters";
 
 const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
+  const history = useHistory();
   const {
     handleSearchTerm,
     price_min,
@@ -13,12 +15,28 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFilterSettings({
-      price_min,
-      price_max,
-      shared_room,
-      shared_house,
+    const removeNull = (obj) => {
+      return Object.entries(obj).reduce((acc, curr) => {
+        const [k, v] = curr;
+        if (v === null || typeof v === "undefined" || v === "") {
+          return acc;
+        } else {
+          return Object.assign(acc, { [k]: v });
+        }
+      }, {});
+    };
+
+    const sp = removeNull({ price_min, price_max, shared_room, shared_house });
+    console.log("sp ==>", sp);
+    // const createSearchParam =
+
+    const searchParamsObject = new URLSearchParams(sp);
+
+    history.push({
+      search: searchParamsObject.toString(),
     });
+
+    setFilterSettings(sp);
   };
   return (
     <>
@@ -58,7 +76,7 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
           <input
             name="shared_room"
             type="checkbox"
-            checked={shared_room}
+            checked={shared_room || false}
             onChange={handleSearchTerm}
             class="checked:bg-gray-900 checked:border-transparent"
           ></input>
@@ -66,7 +84,7 @@ const ListingSearchBar = ({ filterSettings, setFilterSettings }) => {
           <input
             name="shared_house"
             type="checkbox"
-            checked={shared_house}
+            checked={shared_house || false}
             onChange={handleSearchTerm}
             class="checked:bg-gray-900 checked:border-transparent"
           ></input>

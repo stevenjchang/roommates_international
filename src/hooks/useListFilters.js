@@ -6,10 +6,10 @@ export function useListFilters() {
   const [data, setData] = useState([]);
 
   const [filters, setFilters] = useState({
-    price_min: 0,
-    price_max: 100000000,
-    shared_room: null,
-    shared_house: null,
+    price_min: undefined,
+    price_max: undefined,
+    shared_room: undefined,
+    shared_house: undefined,
   });
   const { price_min, price_max, shared_room, shared_house } = filters;
 
@@ -33,7 +33,6 @@ export function useListFilters() {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    console.log("value ==>", value);
     setFilters((prevState) => ({
       ...prevState,
       [name]: value,
