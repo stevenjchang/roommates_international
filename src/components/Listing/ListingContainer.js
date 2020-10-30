@@ -41,7 +41,7 @@ const ListingContainer = () => {
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
       />
-      <ListingAll data={listings} />
+      <ListingAll listings={listings} />
     </>
   );
 };

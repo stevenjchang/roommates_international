@@ -21,3 +21,14 @@ export const getUrlWithParams = (path, params) => {
   const url = getBaseUrl(path);
   return `${url}?${formattedParams}`;
 };
+
+export const determineUrl = (searchCriteria, preexistingParamString) => {
+  if (preexistingParamString) {
+    return preexistingParamString;
+  } else {
+    const a = removeNullValues(searchCriteria);
+    const b = new URLSearchParams(a);
+    const c = b.toString();
+    return c;
+  }
+};

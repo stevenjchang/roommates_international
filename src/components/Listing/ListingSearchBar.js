@@ -48,7 +48,7 @@ const ListingSearchBar = ({ inputValue, handleInputChange, handleSubmit }) => {
             type="checkbox"
             checked={shared_room || false}
             onChange={handleInputChange}
-            className="checked:bg-gray-900 checked:border-transparent"
+            className="checked:bg-gray-900 checked:border-transparent w-5 h-5"
           ></input>
           <label>Share a room</label>
           <input
@@ -56,7 +56,7 @@ const ListingSearchBar = ({ inputValue, handleInputChange, handleSubmit }) => {
             type="checkbox"
             checked={shared_house || false}
             onChange={handleInputChange}
-            className="checked:bg-gray-900 checked:border-transparent"
+            className="checked:bg-gray-900 checked:border-transparent w-5 h-5"
           ></input>
           <label>Share a house</label>
           <input

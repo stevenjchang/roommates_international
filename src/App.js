@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "./App.css";
-
 import { ListingContainer } from "components/Listing/ListingContainer";
 import { ListingNew } from "components/Listing/ListingNew";
+
+import "./App.css";
 
 function App() {
   return (
