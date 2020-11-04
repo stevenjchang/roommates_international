@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ListingDetail } from "components/Listing/ListingDetail";
+import { ListingCard } from "components/Listing/ListingCard";
 
 const NoListingsAvailable = () => (
   <div className="text-center">
@@ -14,7 +14,7 @@ const ListingAll = ({ listings }) => {
       <div className="flex flex-wrap container mx-auto mt-20">
         {listings &&
           listings.map((item, idx) => {
-            return <ListingDetail key={idx} {...item} />;
+            return <ListingCard key={idx} {...item} />;
           })}
         {Array.isArray(listings) &&
           listings.length === 0 &&

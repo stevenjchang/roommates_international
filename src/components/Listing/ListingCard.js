@@ -4,7 +4,7 @@ import Truncate from "components/Truncate";
 
 const placeholderImgUrl = "https://via.placeholder.com/380x280";
 
-const Card = ({
+const ListingCard = ({
   title,
   summary,
   imgUrl = placeholderImgUrl,
@@ -45,19 +45,19 @@ const Card = ({
   </div>
 );
 
-const ListingDetail = ({
-  account_id,
-  category_id,
-  id,
-  summary,
-  title,
-  ...props
-}) => {
-  return (
-    <>
-      <Card title={title} summary={summary} {...props} />
-    </>
-  );
-};
+// const ListingCard = ({
+//   account_id,
+//   category_id,
+//   id,
+//   summary,
+//   title,
+//   ...props
+// }) => {
+//   return (
+//     <>
+//       <Card title={title} summary={summary} {...props} />
+//     </>
+//   );
+// };
 
-export { ListingDetail };
+export { ListingCard };

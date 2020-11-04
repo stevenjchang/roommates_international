@@ -14,11 +14,9 @@ function App() {
           <Route path="/listing/new">
             <ListingNew />
           </Route>
-          <Route path="/listing">
+          <Route path="/">
             <ListingContainer />
           </Route>
-
-          <Route path="/">home</Route>
         </Switch>
       </Router>
     </div>
