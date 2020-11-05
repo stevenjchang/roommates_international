@@ -1,10 +1,23 @@
-import React from "react";
-import CommentDetail from "components/Comment/CommentDetail";
+import React, { useEffect, useState } from "react";
 
-const CommentList = () => {
+import CommentDetail from "components/Comment/CommentDetail";
+import { getBaseUrl } from "utils/url";
+
+const CommentList = ({ listingId }) => {
+  const [comments, setComments] = useState([]);
+  useEffect(() => {
+    const fetchComments = async () => {
+      const res = await fetch(getBaseUrl(`listing/comment/${listingId}`));
+      const { result } = await res.json();
+      setComments(result);
+    };
+    fetchComments();
+  }, [listingId]);
   return (
-    <div>
-      <CommentDetail />
+    <div className="">
+      {comments.map((item, idx) => (
+        <CommentDetail key={idx} {...item} />
+      ))}
     </div>
   );
 };

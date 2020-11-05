@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { ListingContainer } from "components/Listing/ListingContainer";
 import { ListingNew } from "components/Listing/ListingNew";
+import { ListingDetail } from "components/Listing/ListingDetail";
 
 import "./App.css";
 
@@ -13,6 +14,9 @@ function App() {
         <Switch>
           <Route path="/listing/new">
             <ListingNew />
+          </Route>
+          <Route path="/listing/:listing_id">
+            <ListingDetail />
           </Route>
           <Route path="/">
             <ListingContainer />
