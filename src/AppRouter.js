@@ -11,6 +11,7 @@ import { ListingNew } from "components/Listing/ListingNew";
 import { ListingDetail } from "components/Listing/ListingDetail";
 import { UserRegister } from "components/User/UserRegister";
 import { LoginPage } from "components/Login";
+import { Navbar } from "components/Navbar";
 
 import Auth from "utils/Auth";
 
@@ -52,6 +53,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 function AppRouter() {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route path="/listing/new">
           <ListingNew />
