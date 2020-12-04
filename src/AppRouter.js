@@ -10,23 +10,40 @@ import { ListingContainer } from "components/Listing/ListingContainer";
 import { ListingNew } from "components/Listing/ListingNew";
 import { ListingDetail } from "components/Listing/ListingDetail";
 import { UserRegister } from "components/User/UserRegister";
+import { LoginPage } from "components/Login";
+
+import Auth from "utils/Auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(false);
+  useEffect(() => {
+    Auth.Login().then((res) => {
+      if (res.isAuthenticated) {
+        setUser(res.user);
+      }
+      setIsLoading(false);
+    });
+  }, []);
   return (
     <Route
       {...rest}
       render={(props) => {
-        return user ? (
-          <Component {...props} user={user} client={rest.client} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: `/account/login`,
-              state: { from: props.location },
-            }}
-          />
-        );
+        if (isLoading) {
+          return <h1>Loading</h1>;
+        }
+        if (!isLoading && user) {
+          return <Component {...props} user={user} client={rest.client} />;
+        } else {
+          return (
+            <Redirect
+              to={{
+                pathname: `/account/login`,
+                state: { from: props.location },
+              }}
+            />
+          );
+        }
       }}
     />
   );
@@ -44,6 +61,9 @@ function AppRouter() {
         </Route>
         <Route path="/register">
           <UserRegister />
+        </Route>
+        <Route path="/login">
+          <LoginPage />
         </Route>
         <PrivateRoute path="/private" component={ListingNew} />
         <Route path="/">
