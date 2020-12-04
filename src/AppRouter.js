@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-
+import { UserContextProvider } from "context/UserContext";
 import { ListingContainer } from "components/Listing/ListingContainer";
 import { ListingNew } from "components/Listing/ListingNew";
 import { ListingDetail } from "components/Listing/ListingDetail";
@@ -52,27 +52,29 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 function AppRouter() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route path="/listing/new">
-          <ListingNew />
-        </Route>
-        <Route path="/listing/:listing_id">
-          <ListingDetail />
-        </Route>
-        <Route path="/register">
-          <UserRegister />
-        </Route>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <PrivateRoute path="/private" component={ListingNew} />
-        <Route path="/">
-          <ListingContainer />
-        </Route>
-      </Switch>
-    </Router>
+    <UserContextProvider>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/listing/new">
+            <ListingNew />
+          </Route>
+          <Route path="/listing/:listing_id">
+            <ListingDetail />
+          </Route>
+          <Route path="/register">
+            <UserRegister />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <PrivateRoute path="/private" component={ListingNew} />
+          <Route path="/">
+            <ListingContainer />
+          </Route>
+        </Switch>
+      </Router>
+    </UserContextProvider>
   );
 }
 

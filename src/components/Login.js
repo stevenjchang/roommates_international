@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { withRouter, Redirect } from "react-router";
+import { UserContext } from "context/UserContext";
 import Auth from "utils/Auth";
 
 const LoginPage = () => {
+  const { user, setUser } = useContext(UserContext);
+
   const [inputVal, setInputVal] = useState({
     email: "email8@test.com",
     password: "secretword",
@@ -22,6 +26,11 @@ const LoginPage = () => {
       console.log("isAuthenicated ==>", isAuthenicated);
     }
   };
+
+  if (user) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
