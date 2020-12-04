@@ -1,29 +1,26 @@
 import React, { useState, useContext } from "react";
-import { withRouter, Redirect } from "react-router";
+import { Redirect } from "react-router";
 import { UserContext } from "context/UserContext";
 import Auth from "utils/Auth";
 
 const LoginPage = () => {
   const { user, setUser } = useContext(UserContext);
+  const [inputVal, setInputVal] = useState({ email: "", password: "" });
 
-  const [inputVal, setInputVal] = useState({
-    email: "email8@test.com",
-    password: "secretword",
-  });
   const handleOnChange = (e) => {
     setInputVal({
       ...inputVal,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-
-    const { isAuthenicated, user } = await Auth.Login(inputVal);
+    const { user } = await Auth.Login(inputVal);
     if (user) {
-      console.log("user ==>", user);
+      setUser(user);
     } else {
-      console.log("isAuthenicated ==>", isAuthenicated);
+      console.log("No User ==>");
     }
   };
 
