@@ -17,14 +17,16 @@ const LoginPage = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const { user } = await Auth.Login(inputVal);
-    if (user) {
+    console.log("user ==>", user);
+    if (user && user.username) {
       setUser(user);
     } else {
       console.log("No User ==>");
     }
   };
 
-  if (user) {
+  if (user && user.username) {
+    console.log("user ==>", user);
     return <Redirect to="/" />;
   }
 

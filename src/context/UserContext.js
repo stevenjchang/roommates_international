@@ -1,10 +1,23 @@
-import React, { useState, useMemo, createContext } from "react";
+import React, { useState, useEffect, useMemo, createContext } from "react";
+import Auth from "utils/Auth";
 
 export const UserContext = createContext(null);
 
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const userProviderValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+
+  useEffect(() => {
+    if (!user) {
+      Auth.checkIsAlreadyLoggedIn().then((loggedInUser) => {
+        if (loggedInUser) {
+          setUser(loggedInUser);
+        } else {
+          console.log("not logged in ==>");
+        }
+      });
+    }
+  }, [user]);
 
   return (
     <UserContext.Provider value={userProviderValue}>
