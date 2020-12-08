@@ -4,7 +4,6 @@ class Image {
       console.log("Error: id is not a number (utils/Image) ==>");
       return "";
     }
-
     const formattedId = id.toString().length > 1 ? id : "0" + id;
     return `/img/listing/${formattedId}.jpg`;
   }
