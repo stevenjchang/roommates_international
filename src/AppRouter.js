@@ -5,28 +5,46 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-
+import { UserContextProvider } from "context/UserContext";
 import { ListingContainer } from "components/Listing/ListingContainer";
 import { ListingNew } from "components/Listing/ListingNew";
 import { ListingDetail } from "components/Listing/ListingDetail";
 import { UserRegister } from "components/User/UserRegister";
+import { LoginPage } from "components/Login";
+import { Navbar } from "components/Navbar";
+
+import Auth from "utils/Auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(false);
+  useEffect(() => {
+    Auth.Login().then((res) => {
+      if (res.isAuthenticated) {
+        setUser(res.user);
+      }
+      setIsLoading(false);
+    });
+  }, []);
   return (
     <Route
       {...rest}
       render={(props) => {
-        return user ? (
-          <Component {...props} user={user} client={rest.client} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: `/account/login`,
-              state: { from: props.location },
-            }}
-          />
-        );
+        if (isLoading) {
+          return <h1>Loading</h1>;
+        }
+        if (!isLoading && user) {
+          return <Component {...props} user={user} client={rest.client} />;
+        } else {
+          return (
+            <Redirect
+              to={{
+                pathname: `/account/login`,
+                state: { from: props.location },
+              }}
+            />
+          );
+        }
       }}
     />
   );
@@ -34,23 +52,29 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 function AppRouter() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/listing/new">
-          <ListingNew />
-        </Route>
-        <Route path="/listing/:listing_id">
-          <ListingDetail />
-        </Route>
-        <Route path="/register">
-          <UserRegister />
-        </Route>
-        <PrivateRoute path="/private" component={ListingNew} />
-        <Route path="/">
-          <ListingContainer />
-        </Route>
-      </Switch>
-    </Router>
+    <UserContextProvider>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/listing/new">
+            <ListingNew />
+          </Route>
+          <Route path="/listing/:listing_id">
+            <ListingDetail />
+          </Route>
+          <Route path="/register">
+            <UserRegister />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <PrivateRoute path="/private" component={ListingNew} />
+          <Route path="/">
+            <ListingContainer />
+          </Route>
+        </Switch>
+      </Router>
+    </UserContextProvider>
   );
 }
 
