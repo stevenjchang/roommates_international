@@ -49,41 +49,33 @@ function Navbar() {
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
               <img
-                className="block lg:hidden h-8 w-auto"
+                className="block h-8 w-auto mr-3"
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                alt="Workflow"
+                alt="company logo"
               />
-              <img
-                className="hidden lg:block h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                alt="Workflow"
-              />
+              <p className="hidden lg:block w-auto text-2xl text-white font-bold tracking-wide">
+                roommates int'l
+              </p>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="/rooms"
                   className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Dashboard
+                  Rooms
                 </a>
                 <a
-                  href="#"
+                  href="/houses"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Team
+                  Houses
                 </a>
                 <a
-                  href="#"
+                  href="/about"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Projects
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Calendar
+                  About
                 </a>
               </div>
             </div>
@@ -119,7 +111,7 @@ function Navbar() {
                   <span className="sr-only">Open user menu</span>
                   <img
                     className="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src="/13124244.jpeg"
                     alt=""
                   />
                 </button>
@@ -165,25 +157,25 @@ function Navbar() {
             href="#"
             className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
           >
-            Dashboard
+            Rooms
           </a>
           <a
             href="#"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
-            Team
+            Houses
           </a>
           <a
             href="#"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
-            Projects
+            Post
           </a>
           <a
             href="#"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
-            Calendar
+            About
           </a>
         </div>
       </div>
