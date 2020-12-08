@@ -9,18 +9,18 @@ const ListingSearchBar = ({ inputValue, handleInputChange, handleSubmit }) => {
   return (
     <>
       <div className="bg-gray-100">
-        <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-          <h2 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-            Looking for international roommates?
-            <br />
-            <span className="text-indigo-600">
-              Use custom filters to simplify your search.
-            </span>
+        <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between h-half">
+          <h2 className="leading-none font-extrabold text-gray-900 text-2xl sm:text-4xl lg:text-5xl capitalize">
+            Trying to find <br />
+            International Roommates?
+            <p className="mx-auto max-w-screen-sm leading-tight text-base md:text-xl lg:text-3xl leading-7 text-indigo-600 mt-6">
+              Use our custom filters and alerts to simplify your search.
+            </p>
             <br />
           </h2>
           <br />
 
-          <div className="mt-8 flex lg:flex-shrink-0 lg:mt-0">
+          <div className="mt-8 flex lg:flex-shrink-0 lg:mt-0 justify-center">
             <div className="inline-flex rounded-md shadow">
               <a
                 href="/getstarted"

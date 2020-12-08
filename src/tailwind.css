@@ -37,3 +37,9 @@ input[type=number] {
   left: 1em;
   @apply text-red-400 font-extrabold text-6xl
 }
+
+@media only screen and (min-width: 768px) {
+  .h-half {
+    height: 460px;
+  }
+}
