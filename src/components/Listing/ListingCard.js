@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "utils/Image";
 import Truncate from "components/Truncate";
-
-const placeholderImgUrl = "https://via.placeholder.com/380x280";
+// const placeholderImgUrl = "https://via.placeholder.com/380x280";
 
 const ListingCard = ({
   title,
@@ -14,6 +13,8 @@ const ListingCard = ({
   price,
 }) => {
   const imgUrl = Image.getImageUrl(listing_id);
+  const listingUrl = `/listing/${listing_id}`;
+
   return (
     <div className="w-full md:w-1/3 mb-8">
       <div className="rounded overflow-hidden shadow-lg mx-8">
@@ -31,7 +32,9 @@ const ListingCard = ({
               alt="Sunset in the mountains"
             />
           </div>
-          <div className="font-bold text-lg my-6">{title}</div>
+          <div className="font-bold text-lg my-6">
+            <a href={listingUrl}>{title}</a>
+          </div>
 
           {/* <p className="text-gray-700 text-xs text-left">{summary}</p> */}
           <Truncate str={summary} charCount={140} />
