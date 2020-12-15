@@ -54,7 +54,7 @@ function Navbar() {
                 alt="company logo"
               />
               <p className="hidden lg:block w-auto text-2xl text-white font-bold tracking-wide">
-                roommates int'l
+                <a href="/">roommates int'l</a>
               </p>
             </div>
             <div className="hidden sm:block sm:ml-6">

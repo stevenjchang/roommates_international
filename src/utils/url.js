@@ -1,6 +1,6 @@
 const base_url = process.env.REACT_APP_SERVER_URL;
 
-export const getBaseUrl = (route) => {
+export const getServerUrl = (route) => {
   return `${base_url}/${route}`;
 };
 
@@ -18,7 +18,7 @@ export const removeNullValues = (obj) => {
 export const getUrlWithParams = (path, params) => {
   const cleanParams = removeNullValues(params);
   const formattedParams = new URLSearchParams(cleanParams);
-  const url = getBaseUrl(path);
+  const url = getServerUrl(path);
   return `${url}?${formattedParams}`;
 };
 
