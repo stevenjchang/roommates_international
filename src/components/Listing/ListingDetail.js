@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 
 import CommentList from "components/Comment/CommentList";
@@ -18,7 +18,8 @@ const ListingDetail = (props) => {
   }, [listing_id]);
 
   const { title, listing_id: listingId, category_id, summary } = listing;
-  const imgUrl = Image.getImageUrl(listingId);
+  // const imgUrl = Image.getImageUrl(listingId);
+  const imgUrl = ""; //NOTE: remove
 
   return (
     <>
@@ -31,12 +32,8 @@ const ListingDetail = (props) => {
           <img src={imgUrl} alt="" />
           <h4 className="my-12">{summary}</h4>
         </div>
-        <br />
         <hr />
-        <div className="my-8">
-          comments: <p className="my-8"></p>
-          <CommentList listingId={listing_id} />
-        </div>
+        <CommentList listingId={listing_id} />
       </div>
     </>
   );

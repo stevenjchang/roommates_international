@@ -43,3 +43,10 @@ input[type=number] {
     height: 460px;
   }
 }
+
+img {
+  border-style: none;
+}
+.custom {
+  border-style: none;
+}

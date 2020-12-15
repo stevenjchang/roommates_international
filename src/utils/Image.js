@@ -1,5 +1,8 @@
 class Image {
   static getImageUrl(id) {
+    if (!id) {
+      return "";
+    }
     if (typeof id !== "number") {
       console.log("Error: id is not a number (utils/Image) ==>");
       return "";

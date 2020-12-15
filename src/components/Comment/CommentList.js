@@ -14,7 +14,7 @@ const CommentList = ({ listingId }) => {
     fetchComments();
   }, [listingId]);
   return (
-    <div className="">
+    <div className="mx-auto max-w-md my-8">
       {comments.map((item, idx) => (
         <CommentDetail key={idx} {...item} />
       ))}
