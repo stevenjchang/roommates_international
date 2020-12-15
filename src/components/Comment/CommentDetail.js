@@ -1,6 +1,11 @@
 import React from "react";
+import {
+  FaExclamationTriangle,
+  FaExclamationCircle,
+  FaExclamation,
+} from "react-icons/fa";
 
-const Avitar = ({ first_name, last_name }) => {
+const Avatar = ({ first_name, last_name }) => {
   const commentUserInitials = first_name[0] + last_name[0];
   const bgColorsList = [
     "bg-green-400",
@@ -39,7 +44,7 @@ const CommentDetail = ({ first_name, last_name, username, content }) => {
         <div className="flex flex-col justify-center">
           <div className="flex text-left">
             <div className="flex -space-x-2 overflow-hidden">
-              <Avitar first_name={first_name} last_name={last_name} />
+              <Avatar first_name={first_name} last_name={last_name} />
             </div>
             <div className="ml-4">
               <p className="text-sm font-bold">
@@ -51,9 +56,16 @@ const CommentDetail = ({ first_name, last_name, username, content }) => {
           <div className="text-left mt-4">
             <p className="">{content}</p>
           </div>
-          <div className="text-right text-xs font-bold text-gray-500">
-            <span className="mr-2">reply</span>
-            <span className="">report</span>
+          <div className="flex justify-between mt-4 text-xs font-bold text-gray-500">
+            <span className="">
+              <a href="">reply</a>
+            </span>
+            <span>
+              <a href="">
+                report user &nbsp;
+                <FaExclamationTriangle class="inline-block" />
+              </a>
+            </span>
           </div>
         </div>
       </div>

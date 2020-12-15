@@ -18,8 +18,7 @@ const ListingDetail = (props) => {
   }, [listing_id]);
 
   const { title, listing_id: listingId, category_id, summary } = listing;
-  // const imgUrl = Image.getImageUrl(listingId);
-  const imgUrl = ""; //NOTE: remove
+  const imgUrl = Image.getImageUrl(listingId);
 
   return (
     <>
