@@ -9,6 +9,7 @@ const ListingCard = ({
   // imgUrl,
   shared_house,
   shared_room,
+  total_bedrooms,
   listing_id,
   price,
 }) => {
@@ -40,15 +41,17 @@ const ListingCard = ({
           <Truncate str={summary} charCount={140} />
         </div>
         <div className="px-6 pt-4 pb-2 bg-gray-100">
-          <span className="tw-chip bg-purple-300">#photography</span>
-          <span className="tw-chip bg-gray-300">#travel</span>
-          <span className="tw-chip bg-blue-300">#winter</span>
-          <span className="tw-chip bg-gray-300">
-            shared_room = {shared_room.toString()}
-          </span>
-          <span className="tw-chip bg-gray-300">
-            shared_house = {shared_house.toString()}
-          </span>
+          {/* <span className="tw-chip bg-purple-300">{`${total_bedrooms} Bedrooms`}</span>s */}
+          {shared_room ? (
+            <span className="tw-chip bg-gray-300">#shared room</span>
+          ) : (
+            <span className="tw-chip bg-blue-300">#private room</span>
+          )}
+          {shared_house ? (
+            <span className="tw-chip bg-gray-300">#shared house</span>
+          ) : (
+            <span className="tw-chip bg-blue-300">#private house</span>
+          )}
         </div>
       </div>
     </div>
