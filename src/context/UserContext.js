@@ -9,13 +9,11 @@ export const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (!user) {
-      Auth.checkIsAlreadyLoggedIn().then((loggedInUser) => {
-        if (loggedInUser) {
+      Auth.checkIsAlreadyLoggedIn()
+        .then((loggedInUser) => {
           setUser(loggedInUser);
-        } else {
-          console.log("not logged in ==>");
-        }
-      });
+        })
+        .catch((err) => console.log("not logged in ==>"));
     }
   }, [user]);
 

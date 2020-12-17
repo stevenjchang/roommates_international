@@ -53,9 +53,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 function AppRouter() {
   return (
-    <UserContextProvider>
-      <ListingsContextProvider>
-        <Router>
+    <Router>
+      <UserContextProvider>
+        <ListingsContextProvider>
           <Navbar />
           <Switch>
             <Route path="/listing/new">
@@ -75,9 +75,9 @@ function AppRouter() {
               <ListingContainer />
             </Route>
           </Switch>
-        </Router>
-      </ListingsContextProvider>
-    </UserContextProvider>
+        </ListingsContextProvider>
+      </UserContextProvider>
+    </Router>
   );
 }
 
