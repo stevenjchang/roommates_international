@@ -10,8 +10,8 @@ const cleanCheckboxValue = (val) => {
 export function useSearch() {
   const { pushToHistory, search } = useContext(ListingsContext);
   const [inputValue, setInputValue] = useState({
-    price_min: undefined,
-    price_max: undefined,
+    price_min: 0,
+    price_max: 0,
     shared_room: undefined,
     shared_house: undefined,
   });
