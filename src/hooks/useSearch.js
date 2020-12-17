@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from "react";
+
 import { ListingsContext } from "context/ListingsContext";
+import { queryStringToObject } from "utils/Parse";
 
 const cleanCheckboxValue = (val) => {
   return val === true ? true : undefined;
@@ -7,7 +9,6 @@ const cleanCheckboxValue = (val) => {
 
 export function useSearch() {
   const { pushToHistory, search } = useContext(ListingsContext);
-  // const [searchCriteria, setSearchCriteria] = useState({});
   const [inputValue, setInputValue] = useState({
     price_min: undefined,
     price_max: undefined,
@@ -17,17 +18,8 @@ export function useSearch() {
 
   useEffect(() => {
     if (search) {
-      console.log("search ==>", search);
-      const test = JSON.parse(
-        '{"' +
-          decodeURI(search.substring(1))
-            .replace(/"/g, '\\"')
-            .replace(/&/g, '","')
-            .replace(/=/g, '":"') +
-          '"}'
-      );
-      console.log("test ==>", test);
-      setInputValue(test);
+      const newSearchCriteria = queryStringToObject(search);
+      setInputValue(newSearchCriteria);
     }
   }, [search]);
 

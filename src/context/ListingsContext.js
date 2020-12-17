@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState, useMemo } from "react";
 import { useHistory, useRouteMatch, useLocation } from "react-router-dom";
 
 import { getUrlWithParams, removeNullValues } from "utils/url";
+import { queryStringToObject } from "utils/Parse";
 
 export const ListingsContext = createContext(null);
 
@@ -32,19 +33,13 @@ export const ListingsContextProvider = ({ children }) => {
     console.log("useEffect 2 ==>");
 
     if (search) {
-      const test = JSON.parse(
-        '{"' +
-          decodeURI(search.substring(1))
-            .replace(/"/g, '\\"')
-            .replace(/&/g, '","')
-            .replace(/=/g, '":"') +
-          '"}'
-      );
-      setSearchCriteria(test);
+      const newSearchCriteria = queryStringToObject(search);
+      setSearchCriteria(newSearchCriteria);
     }
   }, [search, history]);
 
   const pushToHistory = (inputValue) => {
+    console.log("inputValue ==>", inputValue);
     const queryParams = new URLSearchParams(inputValue);
     history.push({ search: queryParams.toString() });
   };
