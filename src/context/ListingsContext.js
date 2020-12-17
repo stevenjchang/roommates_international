@@ -1,4 +1,10 @@
-import React, { createContext, useEffect, useState, useMemo } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
 import { useHistory, useRouteMatch, useLocation } from "react-router-dom";
 
 import { getUrlWithParams, removeNullValues } from "utils/url";
@@ -28,21 +34,20 @@ export const ListingsContextProvider = ({ children }) => {
   }, [search]);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(search);
-
-    console.log("useEffect 2 ==>");
-
     if (search) {
+      //TODO: move this parse logic to setSearchCriteria fn
       const newSearchCriteria = queryStringToObject(search);
       setSearchCriteria(newSearchCriteria);
     }
   }, [search, history]);
 
-  const pushToHistory = (inputValue) => {
-    console.log("inputValue ==>", inputValue);
-    const queryParams = new URLSearchParams(inputValue);
-    history.push({ search: queryParams.toString() });
-  };
+  const pushToHistory = useCallback(
+    (inputValue) => {
+      const queryParams = new URLSearchParams(inputValue);
+      history.push({ search: queryParams.toString() });
+    },
+    [history]
+  );
 
   const listingsProviderValue = useMemo(
     () => ({
