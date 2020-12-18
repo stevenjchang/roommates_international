@@ -2,8 +2,10 @@ import React from "react";
 // import { useHistory } from "react-router-dom";
 
 // import { useListFilters } from "hooks/useListFilters";
+import { useSearch } from "hooks/useSearch";
 
-const ListingSearchBar = ({ inputValue, handleInputChange, handleSubmit }) => {
+const ListingSearchBar = () => {
+  const { inputValue, handleInputChange, handleSubmit } = useSearch();
   const { price_min, price_max, shared_room, shared_house } = inputValue;
 
   return (
@@ -62,7 +64,7 @@ const ListingSearchBar = ({ inputValue, handleInputChange, handleSubmit }) => {
           <input
             name="price_min"
             type="number"
-            checked={price_min}
+            value={price_min}
             onChange={handleInputChange}
             className="checked:bg-gray-900 checked:border-transparent"
           ></input>
@@ -70,7 +72,7 @@ const ListingSearchBar = ({ inputValue, handleInputChange, handleSubmit }) => {
           <input
             name="price_max"
             type="number"
-            checked={price_max}
+            value={price_max}
             onChange={handleInputChange}
             className=""
           ></input>

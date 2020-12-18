@@ -37,11 +37,9 @@ const ListingCard = ({
             <a href={listingUrl}>{title}</a>
           </div>
 
-          {/* <p className="text-gray-700 text-xs text-left">{summary}</p> */}
           <Truncate str={summary} charCount={140} />
         </div>
         <div className="px-6 pt-4 pb-2 bg-gray-100">
-          {/* <span className="tw-chip bg-purple-300">{`${total_bedrooms} Bedrooms`}</span>s */}
           {shared_room ? (
             <span className="tw-chip bg-gray-300">#shared room</span>
           ) : (
@@ -57,20 +55,5 @@ const ListingCard = ({
     </div>
   );
 };
-
-// const ListingCard = ({
-//   account_id,
-//   category_id,
-//   id,
-//   summary,
-//   title,
-//   ...props
-// }) => {
-//   return (
-//     <>
-//       <Card title={title} summary={summary} {...props} />
-//     </>
-//   );
-// };
 
 export { ListingCard };

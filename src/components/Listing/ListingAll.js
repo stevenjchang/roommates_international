@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { ListingCard } from "components/Listing/ListingCard";
+import { ListingsContext } from "context/ListingsContext";
 
 const NoListingsAvailable = () => (
   <div className="text-center">
@@ -8,7 +9,8 @@ const NoListingsAvailable = () => (
   </div>
 );
 
-const ListingAll = ({ listings }) => {
+const ListingAll = () => {
+  const { listings } = useContext(ListingsContext);
   return (
     <>
       <div className="flex flex-wrap container mx-auto mt-20">
