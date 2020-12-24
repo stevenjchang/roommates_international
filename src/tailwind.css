@@ -3,39 +3,39 @@
 @tailwind utilities;
 
 .tw-summary-p {
-  @apply text-gray-700 text-xs text-left
+  @apply text-gray-700 text-xs text-left;
 }
 .tw-read-more {
-  @apply text-sm rounded-md ml-1 px-2
+  @apply text-sm rounded-md ml-1 px-2;
 }
 .tw-chip {
-  @apply inline-block rounded-full px-3 py-1 text-xs text-gray-700 mr-2 mb-2
+  @apply inline-block rounded-full px-3 py-1 text-xs text-gray-700 mr-2 mb-2;
 }
 .tw-price-float {
   top: 0px;
   left: 0px;
-  @apply opacity-75 text-blue-600 font-bold text-lg bg-white p-2
+  @apply opacity-75 text-blue-600 font-bold text-lg bg-white p-2;
 }
 .tw-large-number-float {
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  @apply text-red-400 font-extrabold text-6xl
+  transform: translate(-50%, -50%);
+  @apply text-red-400 font-extrabold text-6xl;
 }
 label {
-  @apply text-xs
+  @apply text-xs;
 }
 input {
-  @apply mx-2
+  @apply mx-2;
 }
-input[type=number] {
+input[type="number"] {
   width: 5rem;
 }
 
 .tw-left-large-number-float {
   top: 0;
   left: 1em;
-  @apply text-red-400 font-extrabold text-6xl
+  @apply text-red-400 font-extrabold text-6xl;
 }
 
 @media only screen and (min-width: 768px) {
@@ -49,4 +49,30 @@ img {
 }
 .custom {
   border-style: none;
+}
+
+/* Search Bar */
+
+.tw-radio-input {
+  display: none;
+}
+.tw-radio-card {
+  width: 100px;
+  height: 70px;
+  display: inline-block;
+  border: 2px solid rgb(155, 151, 151);
+  border-radius: 20px;
+  @apply bg-gray-300
+    text-sm
+    font-bold
+    /* mx-1 */
+    p-2;
+}
+
+.tw-radio-input:checked + .tw-radio-card {
+  @apply bg-indigo-600
+    text-white;
+}
+.tw-radio-card p {
+  /* transform: translate(0, 25px); */
 }
