@@ -74,14 +74,23 @@ img {
   width: 100px;
   height: 70px;
   display: inline-block;
-  border: 2px solid rgb(155, 151, 151);
-  border-radius: 20px;
+  border: 1px solid #28608f;
+  /* border: 2px solid rgb(155, 151, 151); */
+  /* border-radius: 20px; */
 
   @apply bg-gray-300
     text-sm
     font-bold
     /* mx-1 */
     p-2;
+}
+
+.tw-radio-card:first-of-type {
+  border-radius: 10px 0 0 10px;
+}
+
+.tw-radio-card:last-of-type {
+  border-radius: 0 10px 10px 0;
 }
 
 .tw-radio-input:checked + .tw-radio-card {
