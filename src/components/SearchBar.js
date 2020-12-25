@@ -1,27 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SearchBar() {
+  const [radioInput, setRadioInput] = useState("private");
+
   return (
     <>
       <div className="flex justify-center">
         <form action="" className="flex justify-center">
           {" "}
           <input
+            name="both"
             type="radio"
             className="tw-radio-input"
             value="undefined"
-            checked
+            checked={radioInput === "both"}
           />
-          <div className="tw-radio-card ">
+          <div className="tw-radio-card" onClick={() => setRadioInput("both")}>
             <p className="">Both</p>
           </div>
-          <input type="radio" className="tw-radio-input" value="true" />
-          <div className="tw-radio-card ">
-            <p className="">Private Room only</p>
+          <input
+            name="private"
+            type="radio"
+            className="tw-radio-input"
+            value="true"
+            checked={radioInput === "private"}
+          />
+          <div
+            className="tw-radio-card"
+            onClick={() => setRadioInput("private")}
+          >
+            <p className="">Private rooms only</p>
           </div>
-          <input type="radio" className="tw-radio-input" value="false" />
-          <div className="tw-radio-card ">
-            <p className="">Shared Room only</p>
+          <input
+            name="shared"
+            type="radio"
+            className="tw-radio-input"
+            value="false"
+            checked={radioInput === "shared"}
+          />
+          <div
+            className="tw-radio-card"
+            onClick={() => setRadioInput("shared")}
+          >
+            <p className="">Shared rooms only</p>
           </div>
         </form>
       </div>
