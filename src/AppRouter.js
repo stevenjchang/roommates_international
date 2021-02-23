@@ -14,6 +14,7 @@ import { UserRegister } from "components/User/UserRegister";
 import { LoginPage } from "components/Login";
 import { Navbar } from "components/Navbar";
 import { HeroSection } from "components/HeroSection";
+import { SearchBar } from "components/SearchBar";
 
 import Auth from "utils/Auth";
 
@@ -74,6 +75,7 @@ function AppRouter() {
             <PrivateRoute path="/private" component={ListingNew} />
             <Route path="/">
               <HeroSection />
+              <SearchBar />
               <ListingContainer />
             </Route>
           </Switch>
